@@ -1,0 +1,21 @@
+Add verifier support to http://code.google.com/p/oauthconsumer/
+
+[code]
+[requestToken setVerifier:oauth_verifier]; //get oauth_verifier and set to token
+
+OAMutableURLRequest *request = [[OAMutableURLRequest alloc] 
+                                initWithURL:_url consumer:consumer
+                                token:requestToken realm:nil  
+                                signatureProvider:nil]; // use the default method, HMAC-SHA1
+[request autorelease];
+
+
+[request setHTTPMethod:@"POST"];
+
+OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];
+
+[fetcher fetchDataWithRequest:request
+                     delegate:self
+            didFinishSelector:@selector(accessTokenTicket:didFinishWithData:)
+              didFailSelector:@selector(accessTokenTicket:didFailWithError:)];
+[/code]
