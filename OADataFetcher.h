@@ -33,12 +33,17 @@
     OAMutableURLRequest *request;
     NSURLResponse *response;
     NSURLConnection *connection;
+    NSMutableData *resultBuffer; 
     NSError *error;
     NSData *responseData;
     id delegate;
     SEL didFinishSelector;
     SEL didFailSelector;
 }
+
+@property (retain) NSURLResponse *response;
+@property (retain) OAMutableURLRequest *request;
+@property (retain) NSMutableData *resultBuffer; 
 
 - (void)fetchDataWithRequest:(OAMutableURLRequest *)aRequest delegate:(id)aDelegate didFinishSelector:(SEL)finishSelector didFailSelector:(SEL)failSelector;
 

@@ -178,7 +178,7 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
                              nonce,
 							 extraParameters];
     
-    NSLog(@"oauthHeader %@", oauthHeader);
+//    NSLog(@"oauthHeader %@", oauthHeader);
 	
     [self setValue:oauthHeader forHTTPHeaderField:@"Authorization"];
 }
